@@ -1,0 +1,75 @@
+
+#设置安装路径
+#set installation path
+if [ "$USER" = "root" ]
+then
+        DEFAULT_INSTALL_DIR=/root/program/$PROGRAM
+        DESKTOP=/root/Desktop
+else
+        DEFAULT_INSTALL_DIR=/home/$USER/program/$PROGRAM
+        DESKTOP=/home/$USER/Desktop
+fi
+
+read -p "Please input install directory:[$DEFAULT_INSTALL_DIR] " INSTALL_DIR
+if [ -z "$INSTALL_DIR" ]
+then
+        INSTALL_DIR=$DEFAULT_INSTALL_DIR
+fi
+
+echo "INSTALL_DIR: $INSTALL_DIR"
+if [ ! -d $INSTALL_DIR ]
+then
+        echo "mkdir -p $INSTALL_DIR"
+	mkdir -p $INSTALL_DIR
+fi
+
+#安装包目录
+#package directory
+PACKAGE_DIR=.
+
+#删除安装目录下的所有文件
+#delete all files in INSTALL_DIR
+echo "rm -rf $INSTALL_DIR/*"
+rm -rf $INSTALL_DIR/*
+echo "rm -rf $DESKTOP/$PROGRAM.desktop"
+rm -rf $DESKTOP/$PROGRAM.desktop
+#复制程序及其相关文件到安装目录
+#copy program and other files to INSTALL_DIR
+echo "cp -r $PACKAGE_DIR/software/* $INSTALL_DIR"
+cp -r $PACKAGE_DIR/software/* $INSTALL_DIR
+
+if [ -e $PACKAGE_DIR/software/$PROGRAM.desktop ]
+then
+        #设置桌面快捷方式图标
+        #set icon for .desktop file
+        DEFAULT_NEED_DESKTOP="y"
+        read -p "Need .desktop file?(Y/n):[$DEFAULT_NEED_DESKTOP] " NEED_DESKTOP
+        if [ -z "$NEED_DESKTOP" ]
+        then
+                NEED_DESKTOP=$DEFAULT_NEED_DESKTOP
+        fi
+        if [ "$NEED_DESKTOP" = "y" ] || [ "$NEED_DESKTOP" = "y" ]
+        then
+                #复制桌面快捷方式
+                #create .desktop file
+                echo "cp -r $PACKAGE_DIR/software/$PROGRAM.desktop $DESKTOP"
+                cp -r $PACKAGE_DIR/software/$PROGRAM.desktop $DESKTOP
+                #设置桌面快捷方式指向
+                #set the real program pointed by .desktop file
+                echo "Exec=$INSTALL_DIR/$PROGRAM.sh" >> $DESKTOP/$PROGRAM.desktop
+                
+                DEFAULT_ICON=$PACKAGE_DIR/software/icon.ico
+                read -p "Please input desktop icon:[$DEFAULT_ICON] " ICON
+                if [ -z "$ICON" ]
+                then
+                        ICON=$DEFAULT_ICON
+                else
+                        echo "cp -r $ICON $PACKAGE_DIR 2>/dev/null"
+                        cp -r $ICON $PACKAGE_DIR 2>/dev/null
+                fi
+                ICON=`echo -n $ICON | sed 's,^.*/,,'`
+                echo "Icon=$INSTALL_DIR/$ICON" >> $DESKTOP/$PROGRAM.desktop
+        fi
+fi
+
+echo "Installed! Have fun!"

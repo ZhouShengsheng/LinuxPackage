@@ -1,0 +1,20 @@
+#!/bin/sh
+
+#获得自身的绝对路径
+#get the absolute path of self
+SELF=`readlink -f "$0"`
+
+#获得自身所在目录
+#get directory of self
+DIR=`dirname $SELF`
+
+#获得库文件目录
+#get the library directory
+LIBDIR=$DIR/libs
+
+#设置系统库路径
+#set LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$LIBDIR:${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+
+#启动程序
+#start program

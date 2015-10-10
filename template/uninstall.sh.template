@@ -1,0 +1,32 @@
+
+#设置卸载路径
+#set uninstallation path
+if [ "$USER" = "root" ]
+then
+        DEFAULT_UNINSTALL_DIR=/root/program/$PROGRAM
+        DESKTOP=/root/Desktop
+else
+        DEFAULT_UNINSTALL_DIR=/home/$USER/program/$PROGRAM
+        DESKTOP=/home/$USER/Desktop
+fi
+
+read -p "Please input uninstall directory:[$DEFAULT_UNINSTALL_DIR] " UNINSTALL_DIR
+if [ -z "$UNINSTALL_DIR" ]
+then
+        UNINSTALL_DIR=$DEFAULT_UNINSTALL_DIR
+fi
+
+if [ ! -d $UNINSTALL_DIR ]
+then
+	echo "$IUNINSTALL_DIR is not a directory!"
+	exit 1
+fi
+
+#删除软件与桌面快捷方式
+#delete program and .desktop file
+echo "rm -rf $UNINSTALL_DIR"
+rm -rf $UNINSTALL_DIR
+echo "rm -rf $DESKTOP/$PROGRAM.desktop"
+rm -rf $DESKTOP/$PROGRAM.desktop
+
+echo "Uninstalled!"

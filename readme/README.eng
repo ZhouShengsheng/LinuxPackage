@@ -1,0 +1,14 @@
+Installation and uninstallation specification
+
+Installation:
+(1) run ./install
+(2) input installation path(recommend defalut)
+(3) choose create a .desktop file or not
+(4) if chosen to create a .desktop file, offer an icon.ico file, 
+    copy it to the software directory of package directory or give an absolute path
+(5) finished
+
+Uninstallation:
+(1) run ./uninstall
+(2) input uninstallation path
+(3) finished
