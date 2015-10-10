@@ -5,7 +5,7 @@
 #作者: 周圣盛
 #Author: Jack Jones
 #单位: 南昌大学软件学院
-#Region: Software College of Nanchang University
+#Region: School of Software of Nanchang University
 #创建时间: 2014-12-3
 #Created date: 2014-12-3
 #修改时间: 2014-12-5

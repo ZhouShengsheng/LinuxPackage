@@ -5,7 +5,7 @@
 #作者: 周圣盛
 #Author: Jack Jones
 #单位: 南昌大学软件学院
-#Region: Software College of Nanchang University
+#Region: School of Software of Nanchang University
 #时间: 2014-12-3
 #Date: 2014-12-3
 #修改时间: 2014-12-5
@@ -94,7 +94,7 @@ else
         echo "failed! not found getlibs!"
         exit 1
 fi
-echo "get libraries successfull!"
+echo "get libraries successfully!"
 echo ""
 
 #为程序创建.sh脚本，解决程序在执行时的库依赖问题

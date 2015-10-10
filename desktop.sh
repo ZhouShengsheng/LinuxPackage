@@ -1,11 +1,11 @@
 #!/bin/sh
 
 #功能: 为应用程序创建.desktop文件(桌面快捷方式)
-#Function: create .desktop file for our program
+#Function: create .desktop(desktop shortcut) file for our program
 #作者: 周圣盛
 #Author: Jack Jones
 #单位: 南昌大学软件学院
-#Region: Software College of Nanchang University
+#Region: School of Software of Nanchang University
 #创建时间: 2014-12-4
 #Created date: 2014-12-4
 #修改时间: 2014-12-4

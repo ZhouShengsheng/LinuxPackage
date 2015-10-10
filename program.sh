@@ -1,11 +1,11 @@
 #!/bin/sh
-#!/bin/sh
+
 #功能: 为一个二进制文件生成相应的.sh文件，解决程序运行时的库依赖问题
 #Function: create an .sh file for a binary file to deal with the liarary dependecy probrom
 #作者: 周圣盛
 #Author: Jack Jones
 #单位: 南昌大学软件学院
-#Region: Software College of Nanchang University
+#Region: School of Software of Nanchang University
 #时间: 2014-12-3
 #Date: 2014-12-3
 #修改时间: 2014-12-5
